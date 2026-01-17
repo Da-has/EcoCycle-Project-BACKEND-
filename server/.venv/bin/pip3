@@ -1,4 +1,4 @@
-#!/home/elly/Development/Code/phase4/EcoCycle-Project/Backend/server/.venv/bin/python
+#!/home/elly/Development/Code/phase4/EcoCycle-Project/Backend/server/.venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys
