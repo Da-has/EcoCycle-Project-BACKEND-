@@ -9,3 +9,12 @@ name = "pypi"
 
 [requires]
 python_version = "3.8"
+
+# Core dependencies for EcoCycle API
+flask = ">=2.0.0"
+flask-restful = ">=0.3.9"
+flask-sqlalchemy = ">=2.5.1"
+flask-migrate = ">=3.1.0"
+marshmallow-sqlalchemy = ">=0.28.0"
+flask-marshmallow = ">=0.14.0"
+
