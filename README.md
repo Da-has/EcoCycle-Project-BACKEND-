@@ -70,3 +70,6 @@ Ref: industry.id < waste_requests.industry_id
 Ref: waste.id < waste_requests.waste_id
 
  -->
+
+ ### FRONTEND REPOSITORY 
+     https://github.com/Da-has/EcoCycle-Project-FRONTEND
