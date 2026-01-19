@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify
 from models import db, Industry, industry_schema, industries_schema
 
-# Create Blueprint for industries routes
 industries_bp = Blueprint('industries', __name__, url_prefix='/api/industries')
 
 
@@ -24,11 +23,9 @@ def create_industry():
     """Create a new industry"""
     data = request.get_json()
     
-    # Validate required fields
     if not data or not data.get('name') or not data.get('industry_code'):
         return jsonify({'error': 'Name and industry_code are required'}), 400
     
-    # Check if industry_code already exists
     existing = Industry.query.filter_by(industry_code=data['industry_code']).first()
     if existing:
         return jsonify({'error': f'Industry with code {data["industry_code"]} already exists'}), 400
@@ -54,11 +51,10 @@ def update_industry(id):
     if not data:
         return jsonify({'error': 'No data provided'}), 400
     
-    # Update fields if provided
     if 'name' in data:
         industry.name = data['name']
     if 'industry_code' in data:
-        # Check if new code is already taken by another industry
+    
         existing = Industry.query.filter(
             Industry.industry_code == data['industry_code'],
             Industry.id != id
@@ -79,14 +75,11 @@ def delete_industry(id):
     """Delete an industry"""
     industry = Industry.query.get_or_404(id)
     
-    # Note: Due to cascade, related wastes and waste_requests will also be deleted
     db.session.delete(industry)
     db.session.commit()
     
     return jsonify({'message': f'Industry {id} deleted successfully'})
 
-
-# Additional utility endpoints
 
 @industries_bp.route('/search', methods=['GET'])
 def search_industries():
